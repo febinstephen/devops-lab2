@@ -9,7 +9,7 @@ steps:
 
 options:
   # Set logs bucket behavior to create a user-owned logs bucket in the same region as the build project
-  logging: 'REGIONAL_USER_OWNED_BUCKET'
+  logging: 'febin-log'
 
 images:
   - 'northamerica-northeast2-docker.pkg.dev/ci-lab-412213/febin-100912966/devops-lab2:$COMMIT_SHA'
