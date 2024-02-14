@@ -7,6 +7,21 @@
 #   - name: 'gcr.io/cloud-builders/docker'
 #     args: ['push', 'REGION-docker.pkg.dev/$PROJECT_ID/YOUR_ARTIFACT_REGISTRY_NAME/YOUR_IMAGE_NAME:$COMMIT_SHA']
 
+# Deploy the container to Google Cloud Run
+  # - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  #   entrypoint: 'gcloud'
+  #   args:
+  #     - 'run'
+  #     - 'deploy'
+  #     - '<YOUR-GOOGLE-CLOUD-RUN-SERVICE>'
+  #     - '--image'
+  #     - '<YOUR-ARTIFACT-REGISTRY-PATH>:$COMMIT_SHA'
+  #     - '--region'
+  #     - '<YOUR-GOOGLE-CLOUD-RUN-REGION>'
+  #     - '--platform'
+  #     - 'managed'
+  #     - '--allow-unauthenticated' # Use '--no-allow-unauthenticated' if you don't want to allow unauthenticated access
+
 # options:
 #   # Set logs bucket behavior to create a user-owned logs bucket in the same region as the build project
 #   logging: 'REGIONAL_USER_OWNED_BUCKET'
@@ -24,6 +39,21 @@ steps:
   # Push the image to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-central1-docker.pkg.dev/ci-lab-412213/febin-100912966/devops-lab2:$COMMIT_SHA']
+
+  # Deploy the container to Google Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'devops-lab2'
+      - '--image'
+      - 'us-central1-docker.pkg.dev/ci-lab-412213/febin-100912966/devops-lab2@sha256:$COMMIT_SHA'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated' # Use '--no-allow-unauthenticated' if you don't want to allow unauthenticated access
 
 # options:
 #   # Set logs bucket behavior to create a user-owned logs bucket in the same region as the build project
