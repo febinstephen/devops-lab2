@@ -1,0 +1,34 @@
+# steps:
+#   # Build the Docker image using the Docker Cloud Builder
+#   - name: 'gcr.io/cloud-builders/docker'
+#     args: ['build', '-t', 'REGION-docker.pkg.dev/$PROJECT_ID/YOUR_ARTIFACT_REGISTRY_NAME/YOUR_IMAGE_NAME:$COMMIT_SHA', '.']
+
+#   # Push the image to Google Artifact Registry
+#   - name: 'gcr.io/cloud-builders/docker'
+#     args: ['push', 'REGION-docker.pkg.dev/$PROJECT_ID/YOUR_ARTIFACT_REGISTRY_NAME/YOUR_IMAGE_NAME:$COMMIT_SHA']
+
+# options:
+#   # Set logs bucket behavior to create a user-owned logs bucket in the same region as the build project
+#   logging: 'REGIONAL_USER_OWNED_BUCKET'
+
+# images:
+#   - 'REGION-docker.pkg.dev/$PROJECT_ID/YOUR_ARTIFACT_REGISTRY_NAME/YOUR_IMAGE_NAME:$COMMIT_SHA'
+
+
+
+steps:
+  # Build the Docker image using the Docker Cloud Builder
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'northamerica-northeast2-docker.pkg.dev/ci-lab-412213/febin-100912966/devops-lab2:$COMMIT_SHA', '.']
+
+  # Push the image to Google Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'northamerica-northeast2-docker.pkg.dev/ci-lab-412213/febin-100912966/devops-lab2:$COMMIT_SHA']
+
+# options:
+#   # Set logs bucket behavior to create a user-owned logs bucket in the same region as the build project
+#   logging: 'febin-log'
+
+images:
+  - 'northamerica-northeast2-docker.pkg.dev/ci-lab-412213/febin-100912966/devops-lab2:$COMMIT_SHA'
+  
