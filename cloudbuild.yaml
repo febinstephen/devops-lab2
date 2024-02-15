@@ -48,7 +48,7 @@ steps:
       - 'deploy'
       - 'devops-lab2'
       - '--image'
-      - 'us-central1-docker.pkg.dev/ci-lab-412213/febin-100912966/devops-lab2:13cb309f83890127e9fff4ee2b3abab93d233694'
+      - 'us-central1-docker.pkg.dev/ci-lab-412213/febin-100912966/devops-lab2:latest'
       - '--region'
       - 'us-central1'
       - '--platform'
