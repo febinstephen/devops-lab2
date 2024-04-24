@@ -1,0 +1,24 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UseNode@1
+  inputs:
+    version: '14.x'
+    checkLatest: true
+
+- script: |
+    npm install
+    npm build
+  displayName: 'npm install and build'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Azure for Students'
+    appType: 'webAppLinux'
+    appName: 'devops-final-app'
+    runtimeStack: 'NODE|14-lts'
+    package: '$(Build.ArtifactStagingDirectory)'
