@@ -66,4 +66,32 @@ images:
   - 'us-central1-docker.pkg.dev/ci-lab-412213/febin-100912966/devops-lab2:latest'
   - 'us-central1-docker.pkg.dev/ci-lab-412213/febin-100912966/devops-lab2:$COMMIT_SHA'
 
+
+
+
+  {
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Action": [
+				"ec2:DescribeInstances",
+				"ec2:StartInstances",
+				"ec2:StopInstances"
+			],
+			"Resource": "arn:aws:ec2:ca-central-1:846116578401:instance/i-0f4a4eb97ca6f7e7e"
+		},
+		{
+			"Effect": "Allow",
+			"Action": "rds:*",
+			"Resource": "arn:aws:rds:ca-central-1:846116578401:db:stephen-dbr"
+		}
+	]
+}
+
+
+846116578401
+
+Backend-dev - Gaza875790
+
   
